@@ -1,0 +1,20 @@
+<!-- ?xml version="1.0" encoding="utf-8"?-->
+<!--DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"-->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#101010">
+    <g stroke-width="4">
+      <path id="right-ear" d="M 100 200 q -25 -15 -30 -40 q 30 10 35 5" fill="#41924B"/>
+
+      <ellipse id="face" cx="200" cy="200" rx="100" ry="105" fill="#41924B"/>
+      <ellipse id="right-eye" cx="170" cy="180" rx="9" ry="18" fill="yellow"/>
+      <ellipse id="left-eye" cx="140" cy="182" rx="10" ry="15" fill="yellow"/>
+
+      <path id="right-tooth" d="M 131 260 q -5 -20 3 -35 q 5 30 35 30" fill="white"/>
+      <path id="left-tooth" d="M 209 255 q 5 -20 -10 -40 q 0 25 -10 35" fill="white"/>
+
+      <path id="mouth" d="M 130 260 q 40 -20 80 -5" fill="#41924B"/>
+
+      <path id="left-ear" d="M 285 180 q 20 -5 20 -50 q -20 15 -50 15" fill="#41924B"/>
+    </g>
+    </g>
+</svg> 

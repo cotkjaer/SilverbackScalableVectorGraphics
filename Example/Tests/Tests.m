@@ -6,22 +6,23 @@
 //  Copyright (c) 2014 christian otkjær. All rights reserved.
 //
 
+
 SpecBegin(InitialSpecs)
 
-describe(@"these will fail", ^{
-
-    it(@"can do maths", ^{
-        expect(1).to.equal(2);
-    });
-
-    it(@"can read", ^{
-        expect(@"number").to.equal(@"string");
-    });
-    
-    it(@"will wait and fail", ^AsyncBlock {
-        
-    });
-});
+//describe(@"these will fail", ^{
+//
+//    it(@"can do maths", ^{
+//        expect(1).to.equal(2);
+//    });
+//
+//    it(@"can read", ^{
+//        expect(@"number").to.equal(@"string");
+//    });
+//    
+//    it(@"will wait and fail", ^AsyncBlock {
+//        
+//    });
+//});
 
 describe(@"these will pass", ^{
     
@@ -39,5 +40,7 @@ describe(@"these will pass", ^{
         });
     });
 });
+
+
 
 SpecEnd

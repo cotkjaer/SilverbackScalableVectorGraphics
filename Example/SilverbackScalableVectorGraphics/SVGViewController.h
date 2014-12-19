@@ -10,4 +10,7 @@
 
 @interface SVGViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField *pathField;
+@property (strong, nonatomic) IBOutlet UILabel *parsedLabel;
+
 @end
