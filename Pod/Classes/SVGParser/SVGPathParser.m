@@ -6,13 +6,13 @@
 //
 //
 
-#import "SVGPathAndPointParser.h"
+#import "SVGPathParser.h"
 
 #import "NSCharacterSet+SVG.h"
 #import "SVGPathElement.h"
 #import "SVGPathSegment.h"
 
-@implementation SVGPathAndPointParser
+@implementation SVGPathParser
 
 
 - (BOOL)parsePathSegmenetsIn:(SVGMutablePathElement *)path

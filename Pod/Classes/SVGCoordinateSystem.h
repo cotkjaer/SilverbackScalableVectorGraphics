@@ -9,8 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class SVGTransformation;
-@class SVGCoordinate;
-@class SVGLength;
+
+#import "SVGLength.h"
+#import "SVGAngle.h"
+#import "SVGCoordinate.h"
+
+//#import "SVGPaint.h"
+#import "SVGColor.h"
 
 @interface SVGCoordinateSystem : NSObject
 
@@ -18,13 +23,20 @@
 
 @property (nonatomic, readonly) NSArray * transformations;
 
-- (instancetype)initWithParent:(SVGCoordinateSystem *)parent andTransformations:(NSArray *)transformations;
+- (instancetype)initWithParent:(SVGCoordinateSystem *)parent
+            andTransformations:(NSArray *)transformations;
 
+/// transform the coordinate into topmost - parent coordinatesystem
+- (SVGCoordinate *)absoluteCoordinate:(SVGCoordinate *)coordinate;
 
-- (SVGCoordinate *)convertCoordinate:(SVGCoordinate *)coordinate fromCoordinateSystem:(SVGCoordinateSystem *)system;
+/// transform the length into topmost - parent coordinatesystem
+- (SVGLength *)absoluteLength:(SVGLength *)length;
 
-
-
-- (SVGLength *)convertLength:(SVGLength *)length fromCoordinateSystem:(SVGCoordinateSystem *)system;
+//- (void)addTransformation:(SVGTransformation *)transformation;
 
 @end
+
+CGRect CGRectMakeAtCenter(CGFloat cx, CGFloat cy, CGFloat width, CGFloat height);
+
+CGRect CGRectMakeSquare(CGFloat ox, CGFloat oy, CGFloat side);
+

@@ -18,16 +18,7 @@
 #import "SVGlineElement.h"
 #import "SVGTextElement.h"
 
-inline CGRect CGRectMakeAtCenter(CGFloat cx, CGFloat cy, CGFloat width, CGFloat height)
-{
-    return CGRectMake(cx - width/2.f, cy-height/2.f, width, height);
-}
-
-inline CGRect CGRectMakeSquare(CGFloat ox, CGFloat oy, CGFloat side)
-{
-    return CGRectMake(ox, oy, side, side);
-}
-
+#import "SVGStyleParser.h"
 
 @implementation SVGElement
 
@@ -79,7 +70,79 @@ inline CGRect CGRectMakeSquare(CGFloat ox, CGFloat oy, CGFloat side)
     return self.parent.coordinateSystem;
 }
 
+#pragma mark - Attributes
+
+@synthesize attributes = _attributes;
+
+- (NSDictionary *)attributes
+{
+    if ([_attributes.allKeys containsObject:@"style"])
+    {
+        NSMutableDictionary * attributes = [_attributes mutableCopy];
+        
+        NSString * styleText = attributes[@"style"];
+        
+        NSDictionary * styleAttributes = [SVGStyleParser attributesFromStyleText:styleText];
+        
+        [styleAttributes enumerateKeysAndObjectsUsingBlock:^(NSString * key, NSString * value, BOOL *stop)
+        {
+            if (key.length > 0)
+            {
+                if (attributes[key] && ![value isEqualToString:attributes[key]])
+                {
+                    NSLog(@"Ignoring style attribute %@ with value %@, real attribute with value %@ already set", key, value, attributes[key]);
+                }
+                else
+                {
+                    attributes[key] = value;
+                }
+            }
+        }];
+        
+        [attributes removeObjectForKey:@"style"];
+        
+        _attributes = [attributes copy];
+    }
+    
+    return _attributes;
+}
+
 #pragma mark - Rendering
+
+@synthesize strokeColor = _strokeColor;
+
+- (SVGColor *)strokeColor
+{
+    if (_strokeColor == nil)
+    {
+        _strokeColor = [self.parent strokeColor];
+        
+        if (self.attributes[@"stroke"])
+        {
+            _strokeColor = [SVGColor colorFromText:self.attributes[@"stroke"]];
+        }
+    }
+    
+    return _strokeColor;
+}
+
+
+@synthesize fillColor = _fillColor;
+
+- (SVGColor *)fillColor
+{
+    if (_fillColor == nil)
+    {
+        _fillColor = [self.parent fillColor];
+        
+        if (self.attributes[@"fill"])
+        {
+            _fillColor = [SVGColor colorFromText:self.attributes[@"fill"]];
+        }
+    }
+    
+    return _fillColor;
+}
 
 - (void)render
 {

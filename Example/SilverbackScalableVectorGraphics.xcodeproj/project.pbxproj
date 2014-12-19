@@ -34,6 +34,7 @@
 		8F2C36811A423D06004EF252 /* test04.svg in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C36801A423D06004EF252 /* test04.svg */; };
 		8F2C36821A423D11004EF252 /* test04.svg in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C36801A423D06004EF252 /* test04.svg */; };
 		8F76D5901A40A2D3000B4EB7 /* TestSVGParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F76D58F1A40A2D3000B4EB7 /* TestSVGParser.m */; };
+		8F7C97D91A4420DE00498EA5 /* SVGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7C97D81A4420DE00498EA5 /* SVGView.m */; };
 		E1C1AFC8307C1648EE85B575 /* libPods-SilverbackScalableVectorGraphics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 987FC3A3973E044181FAE4A8 /* libPods-SilverbackScalableVectorGraphics.a */; };
 		F355D1734B665DB81F2BBE3F /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF270003D8A55F7E8178967 /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,8 @@
 		8F12D0B31A4203F200125557 /* test03.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test03.svg; sourceTree = "<group>"; };
 		8F2C36801A423D06004EF252 /* test04.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test04.svg; sourceTree = "<group>"; };
 		8F76D58F1A40A2D3000B4EB7 /* TestSVGParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSVGParser.m; sourceTree = "<group>"; };
+		8F7C97D71A4420DE00498EA5 /* SVGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGView.h; sourceTree = "<group>"; };
+		8F7C97D81A4420DE00498EA5 /* SVGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVGView.m; sourceTree = "<group>"; };
 		96D3B215B750FF0046DA92A3 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		987FC3A3973E044181FAE4A8 /* libPods-SilverbackScalableVectorGraphics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SilverbackScalableVectorGraphics.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2BBBAACC4045B357832E72F /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				6003F5A2195388D20070C39A /* Main_iPad.storyboard */,
 				6003F5A5195388D20070C39A /* SVGViewController.h */,
 				6003F5A6195388D20070C39A /* SVGViewController.m */,
+				8F7C97D71A4420DE00498EA5 /* SVGView.h */,
+				8F7C97D81A4420DE00498EA5 /* SVGView.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -400,6 +405,7 @@
 				6003F59E195388D20070C39A /* SVGAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* SVGViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				8F7C97D91A4420DE00498EA5 /* SVGView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

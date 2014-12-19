@@ -16,7 +16,6 @@
 
 @implementation SVGCanvas
 
-
 - (instancetype)init
 {
     self = [super init];

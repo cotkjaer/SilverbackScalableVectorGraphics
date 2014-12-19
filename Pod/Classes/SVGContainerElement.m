@@ -8,6 +8,7 @@
 
 #import "SVGContainerElement.h"
 #import "SVGCoordinateSystem.h"
+#import "SVGTransformation.h"
 
 @interface SVGContainerElement ()
 
@@ -49,12 +50,25 @@
         coordinateSystem = [SVGCoordinateSystem new];
     }
     
-    if([self.attributes.allKeys containsObject:@"transform"])
+    if (self.attributes[@"transform"])
     {
-        NSLog(@"TODO: create transformed coordinate system in %@.%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-        coordinateSystem = coordinateSystem;
-    }
+        SVGTransformation * transformation = [SVGTransformation fromText:self.attributes[@"transform"]];
+        
+        if (transformation)
+        {
+            NSMutableArray * transformations = [NSMutableArray new];
+            
+            if (coordinateSystem.transformations)
+            {
+                [transformations addObjectsFromArray:coordinateSystem.transformations];
+            }
+            
+            [transformations addObject:transformation];
 
+            coordinateSystem = [[SVGCoordinateSystem alloc] initWithParent:coordinateSystem.parent andTransformations:[transformations copy]];
+        }
+    }
+    
     return coordinateSystem;
 }
 
@@ -65,6 +79,7 @@
     if ([element isKindOfClass:[SVGElement class]])
     {
         [self.childElements addObject:element];
+        element.parent = self;
     }
 }
 - (void)addText:(NSString *)text
@@ -73,6 +88,24 @@
     {
         [self.texts addObject:text];
     }
+}
+
+#pragma mark - Enumerate
+
+- (void)enumerateChildElementsUsingBlock:(void (^)(SVGElement *, NSUInteger, BOOL *))block
+{
+    [self.childElements enumerateObjectsUsingBlock:block];
+}
+
+
+#pragma mark - Render
+
+- (void)render
+{
+    [self enumerateChildElementsUsingBlock:^(SVGElement *childElement, NSUInteger index, BOOL *stopChildElements)
+    {
+        [childElement render];
+    }];
 }
 
 #pragma mark - description

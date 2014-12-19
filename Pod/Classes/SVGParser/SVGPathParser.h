@@ -10,7 +10,7 @@
 
 @class SVGMutablePathElement;
 
-@interface SVGPathAndPointParser : NSObject
+@interface SVGPathParser : NSObject
 
 - (BOOL)parsePathSegmenetsIn:(SVGMutablePathElement *)path;
 

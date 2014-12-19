@@ -9,7 +9,8 @@
 @import Foundation;
 
 @class SVGContainerElement;
-@class SVGCoordinateSystem;
+
+#import "SVGCoordinateSystem.h"
 
 @interface SVGElement : NSObject
 
@@ -27,23 +28,16 @@
 
 @property (nonatomic, readonly) NSDictionary * attributes;
 
-@property (nonatomic, readonly) SVGContainerElement *parent;
+@property (nonatomic, strong) SVGContainerElement *parent;
 
 @property (nonatomic, readonly) SVGCoordinateSystem * coordinateSystem;
 
 #pragma mark - Rendering
 
+@property (nonatomic, readonly) SVGColor * strokeColor;
+@property (nonatomic, readonly) SVGColor * fillColor;
+
 - (void)render;
 
 @end
 
-#import "SVGLength.h"
-#import "SVGAngle.h"
-#import "SVGCoordinate.h"
-
-//#import "SVGPaint.h"
-//#import "SVGColor.h"
-
-CGRect CGRectMakeAtCenter(CGFloat cx, CGFloat cy, CGFloat width, CGFloat height);
-
-CGRect CGRectMakeSquare(CGFloat ox, CGFloat oy, CGFloat side);

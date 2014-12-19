@@ -14,4 +14,6 @@
 
 - (void)addText:(NSString *)text;
 
+- (void)enumerateChildElementsUsingBlock:(void (^)(SVGElement * childElement, NSUInteger index, BOOL *stopChildElements))block;
+
 @end

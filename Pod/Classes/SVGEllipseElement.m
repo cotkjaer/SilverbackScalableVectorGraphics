@@ -7,13 +7,14 @@
 //
 
 #import "SVGEllipseElement.h"
+#import "SVGCoordinateSystem.h"
 
 @interface SVGEllipseElement()
 
-@property (nonatomic, strong) SVGCoordinate * cx;
-@property (nonatomic, strong) SVGCoordinate * cy;
-@property (nonatomic, strong) SVGLength * rx;
-@property (nonatomic, strong) SVGLength * ry;
+//@property (nonatomic, strong) SVGCoordinate * cx;
+//@property (nonatomic, strong) SVGCoordinate * cy;
+//@property (nonatomic, strong) SVGLength * rx;
+//@property (nonatomic, strong) SVGLength * ry;
 
 @property (nonatomic, strong) UIBezierPath * rawBezierPath;
 
@@ -28,6 +29,8 @@
 
 #pragma mark - Attributes
 
+@synthesize cx = _cx;
+
 - (SVGCoordinate *)cx
 {
     if (_cx == nil)
@@ -36,6 +39,8 @@
     }
     return _cx;
 }
+
+@synthesize cy = _cy;
 
 - (SVGCoordinate *)cy
 {
@@ -46,6 +51,8 @@
     return _cy;
 }
 
+@synthesize rx = _rx;
+
 - (SVGLength *)rx
 {
     if (_rx == nil)
@@ -55,6 +62,8 @@
     
     return _rx;
 }
+
+@synthesize ry = _ry;
 
 - (SVGLength *)ry
 {
@@ -70,10 +79,22 @@
 
 - (UIBezierPath *)createRawBezierPath
 {
-    return [UIBezierPath bezierPathWithOvalInRect:CGRectMakeAtCenter(self.cx.value,
-                                                                     self.cy.value,
-                                                                     self.rx.value * 2.f,
-                                                                     self.ry.value * 2.f)];
+    SVGCoordinate * absoluteCX = [self.coordinateSystem absoluteCoordinate:self.cx];
+    SVGCoordinate * absoluteCY = [self.coordinateSystem absoluteCoordinate:self.cy];
+
+    SVGLength * absoluteRX = [self.coordinateSystem absoluteLength:self.rx];
+    SVGLength * absoluteRY = [self.coordinateSystem absoluteLength:self.ry];
+    
+    CGRect ellipseRect = CGRectMakeAtCenter(absoluteCX.value,
+                                            absoluteCY.value,
+                                            absoluteRX.value * 2.f,
+                                            absoluteRY.value * 2.f);
+    
+    NSLog(@"ellipse : cx = %.3f cy = %3f - rx = %.3f, ry = %.3f", absoluteCX.value, absoluteCY.value, absoluteRX.value, absoluteRY.value);
+
+    UIBezierPath * ellipse = [UIBezierPath bezierPathWithOvalInRect:ellipseRect];
+    
+    return ellipse;
 }
 
 - (UIBezierPath *)rawBezierPath
@@ -88,7 +109,18 @@
 
 - (void)render
 {
-    [self.rawBezierPath stroke];
+    if (self.fillColor)
+    {
+        [self.fillColor.UIColor setFill];
+        [self.rawBezierPath fill];
+    }
+    
+    if (self.strokeColor)
+    {
+        [self.strokeColor.UIColor setStroke];
+        [self.rawBezierPath stroke];
+    }
+    
 }
 
 @end

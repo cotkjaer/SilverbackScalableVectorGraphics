@@ -42,7 +42,6 @@ inline SVGCoordinatePair SVGCoordinatePairMake(SVGFloat x, SVGFloat y)
     return singleton;
 }
 
-
 + (NSCache *)valueCache
 {
     static NSCache * singleton = nil;
@@ -66,7 +65,12 @@ inline SVGCoordinatePair SVGCoordinatePairMake(SVGFloat x, SVGFloat y)
 
 #pragma mark - Factory
 
-- (instancetype)initWithValue:(NSNumber *) value
+- (instancetype)initWithValue:(SVGFloat)value
+{
+    return [self initWithNumberValue:@(value)];
+}
+
+- (instancetype)initWithNumberValue:(NSNumber *) value
 {
     self = [super init];
     
@@ -78,9 +82,34 @@ inline SVGCoordinatePair SVGCoordinatePairMake(SVGFloat x, SVGFloat y)
     return self;
 }
 
+
+
++ (NSScanner *)numberScanner
+{
+    static NSScanner * singleton = nil;
+    
+    static dispatch_once_t _once_token;
+    
+    dispatch_once(&_once_token, ^
+                  {
+                      singleton = [NSScanner new];
+                  });
+    
+    return singleton;
+}
+
++ (NSNumber *)scanNumberFromText:(NSString *)valueText
+{
+    float number;
+    
+    [[NSScanner scannerWithString:valueText] scanFloat:&number];
+    
+    return @(number);
+}
+
 + (instancetype)fromText:(NSString *)valueText
 {
-    NSNumber * numberValue = [[SVGValue numberFormatter] numberFromString:valueText];
+    NSNumber * numberValue = [self scanNumberFromText:valueText]; //[[SVGValue numberFormatter] numberFromString:valueText];
     
     if (numberValue == nil)
     {
@@ -91,7 +120,7 @@ inline SVGCoordinatePair SVGCoordinatePairMake(SVGFloat x, SVGFloat y)
     
     if (value == nil)
     {
-        value = [[self alloc] initWithValue:numberValue];
+        value = [[self alloc] initWithNumberValue:numberValue];
         [[self valueCache] setObject:value forKey:numberValue];
     }
     

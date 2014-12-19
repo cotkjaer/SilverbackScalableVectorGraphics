@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 christian otkjær. All rights reserved.
 //
 
-#import <SilverbackScalableVectorGraphics/SVGPathAndPointParser.h>
+#import <SilverbackScalableVectorGraphics/SVGPathParser.h>
 #import <SilverbackScalableVectorGraphics/SVGPathElement.h>
 
 SpecBegin(SVGPathParser)
 
 describe(@"SVGPathParser", ^{
     
-    __block SVGPathAndPointParser * parser = [SVGPathAndPointParser new];
+    __block SVGPathParser * parser = [SVGPathParser new];
     
     beforeAll(^{
     
-        parser = [SVGPathAndPointParser new];
+        parser = [SVGPathParser new];
         
     });
 /*

@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class SVGView;
+
 @interface SVGViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *pathField;
 @property (strong, nonatomic) IBOutlet UILabel *parsedLabel;
+@property (strong, nonatomic) IBOutlet SVGView *svgView;
 
 @end

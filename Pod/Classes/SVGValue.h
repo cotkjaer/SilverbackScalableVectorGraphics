@@ -30,4 +30,6 @@ SVGCoordinatePair SVGCoordinatePairMake(SVGFloat x, SVGFloat y);
 
 + (instancetype)fromText:(NSString *)valueText;
 
+- (instancetype)initWithValue:(SVGFloat)value;
+
 @end

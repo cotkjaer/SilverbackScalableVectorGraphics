@@ -12,12 +12,11 @@
 
 - (instancetype)initWithWithUnitType:(SVGLengthUnitType)unitType valueInSpecifiedUnits:(SVGFloat)valueInSpecifiedUnits
 {
-    self = [super init];
+    self = [super initWithValue:valueInSpecifiedUnits];
     
     if (self)
     {
         _unitType = unitType;
-        _valueInSpecifiedUnits = valueInSpecifiedUnits;
     }
     
     return self;
@@ -26,7 +25,7 @@
 - (SVGFloat)valueInSpecifiedUnits:(SVGLengthUnitType)unitType
 {
     // TODO: calculate
-    return self.valueInSpecifiedUnits;
+    return self.value;
 }
 
 

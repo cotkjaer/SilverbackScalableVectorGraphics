@@ -10,6 +10,7 @@
 
 #import "SVGDocument.h"
 #import "SVGSVGElement.h"
+#import "SVGView.h"
 
 @interface SVGViewController ()
 
@@ -59,6 +60,7 @@ NSString* testString = @"<svg height='210' width='400'><path d='M150 0 L75 200 L
         if (self.svg.svgElement)
         {
             self.parsedLabel.text = [self.svg.svgElement description];
+            self.svgView.svgElement = self.svg.svgElement;
         }
         else if (self.svg.error)
         {

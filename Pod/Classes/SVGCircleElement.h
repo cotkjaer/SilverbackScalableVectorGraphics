@@ -8,9 +8,6 @@
 
 #import "SVGElement.h"
 
-@class SVGCoordinate;
-@class SVGLength;
-
 @interface SVGCircleElement : SVGElement
 
 /**

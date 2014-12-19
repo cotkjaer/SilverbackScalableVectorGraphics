@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, SVGLengthUnitType)
 @property (nonatomic, readonly) SVGLengthUnitType unitType;
 
 @property (nonatomic, readonly) SVGFloat value;
-@property (nonatomic, readonly) SVGFloat valueInSpecifiedUnits;
+//@property (nonatomic, readonly) SVGFloat valueInSpecifiedUnits;
 @property (nonatomic, readonly) NSString * valueAsString;
 
 - (instancetype)initWithWithUnitType:(SVGLengthUnitType)unitType

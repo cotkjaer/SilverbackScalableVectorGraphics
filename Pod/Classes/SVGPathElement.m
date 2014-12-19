@@ -12,7 +12,7 @@
 
 #import "SVGPathSegmentMoveTo.h"
 
-#import "SVGPathAndPointParser.h"
+#import "SVGPathParser.h"
 
 @interface SVGPathElement ()
 
@@ -107,7 +107,7 @@
         return nil;
     }
     
-    SVGPathAndPointParser * parser = [SVGPathAndPointParser new];
+    SVGPathParser * parser = [SVGPathParser new];
     
     NSMutableArray * segmentTokens = [NSMutableArray new];
     
